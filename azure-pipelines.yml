@@ -14,6 +14,9 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: TerraformInstaller@0
+  inputs:
+    terraformVersion: '0.12.3'
 - task: TerraformTaskV1@0
   inputs:
     provider: 'azurerm'
@@ -26,3 +29,8 @@ steps:
 # Start with a minimal pipeline that you can customize to build and deploy your code.
 # Add steps that build, run tests, deploy, and more:
 # https://aka.ms/yaml
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'plan'
+    environmentServiceNameAzureRM: 'Azure Internal Consumption(d8fbfe10-96dd-416a-9181-31bb408ce301)'
