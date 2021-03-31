@@ -14,9 +14,13 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-- task: TerraformInstaller@0
+- task: AzureCLI@2
   inputs:
-    terraformVersion: '0.12.3'
+    azureSubscription: 'Azure Internal Consumption(d8fbfe10-96dd-416a-9181-31bb408ce301)'
+    scriptType: 'bash'
+    scriptLocation: 'inlineScript'
+    inlineScript: 'az account list -o table'
+    addSpnToEnvironment: true
 - task: TerraformTaskV1@0
   inputs:
     provider: 'azurerm'
