@@ -1,7 +1,5 @@
 # Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
+
 
 trigger:
 - master
@@ -17,3 +15,15 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
+- task: TerraformTaskV1@0
+  inputs:
+    provider: 'azurerm'
+    command: 'init'
+    backendServiceArm: 'Azure Internal Consumption(d8fbfe10-96dd-416a-9181-31bb408ce301)'
+    backendAzureRmResourceGroupName: 'cloud-init-2'
+    backendAzureRmStorageAccountName: 'packagestorer'
+    backendAzureRmContainerName: 'testlifecycle'
+    backendAzureRmKey: 'teststate'
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
